@@ -1,0 +1,206 @@
+hello sobat kembali lagi di channel lukman purnama
+jangan lupa klik tombol subscribe nya ya ! inget subscribe itu gratis looo.....
+
+di video sebelum saya membuat totorial membuat database lewat cmd 
+nah kali ini saya akan membuat totorial tentang DML 
+
+
+sobat pasti bingungkan apa itu DML ?
+
+
+
+
+
+DML itu DATA MANIPULATION LANGUAGE sekumpulan perintah 
+query yang digunakan untuk memanipulasi data dalam tabel
+
+nah udah taukan sobat apa itu DML .
+sekarang kita langsung aja ke TKP hahaahaha.
+
+pertama langkahnya sama seperti video sebelumnya 
+buka XAMPP lalu tekan start
+kemudian masuk ke cmd dan
+
+nah selanjutnya buat DATABASE dan TABEL 
+
+ CREATE TABLE Mahasiswa (NIM INT(15), Nama VARCHAR(20), AlamatJalan TEXT(30),Kota VARCHAR(15), KodePos INT(10), noHP INT(15), JenisKelamin VARCHAR(10), TanggalLahir VARCHAR(15), KodeDosen INT(10));
+ 
+ MariaDB [op]> DESC Mahasiswa;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| NIM          | int(15)     | YES  |     | NULL    |       |
+| Nama         | varchar(20) | YES  |     | NULL    |       |
+| AlamatJalan  | tinytext    | YES  |     | NULL    |       |
+| Kota         | varchar(15) | YES  |     | NULL    |       |
+| KodePos      | int(10)     | YES  |     | NULL    |       |
+| noHP         | int(15)     | YES  |     | NULL    |       |
+| JenisKelamin | varchar(10) | YES  |     | NULL    |       |
+| TanggalLahir | varchar(15) | YES  |     | NULL    |       |
+| KodeDosen    | int(10)     | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+9 rows in set (1.02 sec)
+isi data pada tabel dengan perintah;
+
+	INSERT INTO <table_nama> (field,........,field)VALUE (value,......,value);	
+
+INSERT INTO Mahasiswa (NIM,Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen) VALUE ("11223344",'Ari Santoso', 'Jl.kenari', 'Bekasi', '334455','011223344', 'Laki-Laki', '1998-10-12', '22334');
+	
+	lalu sobat check 
+SELECT*FROM <table>;
+
+
+kita buat sebanyak 5'
+dengan langkah yang sama sobat oke
+
+INSERT INTO Mahasiswa (NIM,Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen) VALUE ('11223345','Ario Talib','Jl.merpati','Cikarang','334456','011223345','Laki-Laki','1999-11-16','22335');
+INSERT INTO Mahasiswa (NIM,Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen) VALUE ("11223346",'Dina Marliana', 'Jl.melati', 'Karawang', '334457','011223346', 'Perempuan', '1997-12-01', '22336');
+INSERT INTO Mahasiswa (NIM,Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen) VALUE ("11223347",'Lisa Ayu', 'Jl.anggrek', 'Bekasi', '334458','011223347', 'Perempuan', '1996-01-02', '22337');
+INSERT INTO Mahasiswa (NIM,Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen) VALUE ("11223348",'Tiara Wahidah', 'Jl.Mawar', 'Bekasi', '334459','011223348', 'Perempuan', '1980-02-05', '22338');
+INSERT INTO Mahasiswa (NIM,Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen) VALUE ("11223349",'Anton Sinaga', 'Jl.kenanga', 'Cikarang', '334450','011223349', 'Laki-Laki', '1988-03-10', '22339');	
+
+MariaDB [op]> select*from Mahasiswa;
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan | Kota     | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl.kenari   | Bekasi   |  334455 | 11223344 | Laki-Laki    | 1998-10-12   |     22334 |
+| 11223345 | Ario Talib    | Jl.merpati  | Cikarang |  334456 | 11223345 | Laki-Laki    | 1999-11-16   |     22335 |
+| 11223346 | Dina Marliana | Jl.melati   | Karawang |  334457 | 11223346 | Perempuan    | 1997-12-01   |     22336 |
+| 11223347 | Lisa Ayu      | Jl.anggrek  | Bekasi   |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
+| 11223348 | Tiara Wahidah | Jl.Mawar    | Bekasi   |  334459 | 11223348 | Perempuan    | 1980-02-05   |     22338 |
+| 11223349 | Anton Sinaga  | Jl.kenanga  | Cikarang |  334450 | 11223349 | Laki-Laki    | 1988-03-10   |     22339 |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+6 rows in set (0.00 sec)
+
+
+cara mengubah data pada tabel dan menghapus data.
+
+mengubah data dengan perintah;
+UPDATE <table> SET field ='value1,......,fieldn=valuen WHERE <kondisi>;
+
+update mahasiswa set TanggalLahir="1979-10-31" WHERE NIM="11223344";
+
+MariaDB [op]> select*from mahasiswa;
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan | Kota     | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl.kenari   | Bekasi   |  334455 | 11223344 | Laki-Laki    | 1979-10-31   |     22334 |
+| 11223345 | Ario Talib    | Jl.merpati  | Cikarang |  334456 | 11223345 | Laki-Laki    | 1999-11-16   |     22335 |
+| 11223346 | Dina Marliana | Jl.melati   | Karawang |  334457 | 11223346 | Perempuan    | 1997-12-01   |     22336 |
+| 11223347 | Lisa Ayu      | Jl.anggrek  | Bekasi   |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
+| 11223348 | Tiara Wahidah | Jl.Mawar    | Bekasi   |  334459 | 11223348 | Perempuan    | 1980-02-05   |     22338 |
+| 11223349 | Anton Sinaga  | Jl.kenanga  | Cikarang |  334450 | 11223349 | Laki-Laki    | 1988-03-10   |     22339 |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+6 rows in set (0.00 sec)
+
+menghapus data dengan perintah;
+DELETE FROM <table_nama> WHERE <kondisi>;
+
+MariaDB [op]> DELETE FROM Mahasiswa WHERE NIM="11223346";
+
+MariaDB [op]> select*from mahasiswa;
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan | Kota     | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl.kenari   | Bekasi   |  334455 | 11223344 | Laki-Laki    | 1979-10-31   |     22334 |
+| 11223345 | Ario Talib    | Jl.merpati  | Cikarang |  334456 | 11223345 | Laki-Laki    | 1999-11-16   |     22335 |
+| 11223347 | Lisa Ayu      | Jl.anggrek  | Bekasi   |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
+| 11223348 | Tiara Wahidah | Jl.Mawar    | Bekasi   |  334459 | 11223348 | Perempuan    | 1980-02-05   |     22338 |
+| 11223349 | Anton Sinaga  | Jl.kenanga  | Cikarang |  334450 | 11223349 | Laki-Laki    | 1988-03-10   |     22339 |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+
+menampilkan data dengan beberapa filter 
+1. menampilkan satu baris data dengan perintah;
+
+SELECT (field,...,fieldn) FROM <table> WHERE <kondisi>;
+
+MariaDB [op]> SELECT NIM, Nama, AlamatJalan, Kota, KodePos, noHP, JenisKelamin, TanggalLahir, KodeDosen FROM Mahasiswa WHERE NIM="11223344";
++----------+-------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama        | AlamatJalan | Kota   | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+-------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso | Jl.kenari   | Bekasi |  334455 | 11223344 | Laki-Laki    | 1979-10-31   |     22334 |
++----------+-------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+1 row in set (0.08 sec)
+
+
+menampilkan data dengan operator kondisi seperti ;
+= , > , < , >= , <= , <>
+menggunakan perintah ;
+SELECT*FROM <table> WHERE <kondisi>;
+
+MariaDB [op]> SELECT*FROM Mahasiswa WHERE TanggalLahir>="1996-01-02";
++----------+------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama       | AlamatJalan | Kota     | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| 11223345 | Ario Talib | Jl.merpati  | Cikarang |  334456 | 11223345 | Laki-Laki    | 1999-11-16   |     22335 |
+| 11223347 | Lisa Ayu   | Jl.anggrek  | Bekasi   |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
++----------+------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+2 rows in set (0.06 sec)
+
+menampilkan data dengan logika (AND) dan (OR).
+logika (AND) dengan perintah .
+SELECT*FROM <table> WHERE <kondisi> AND/OR <kondisi>;
+
+MariaDB [op]> SELECT*FROM Mahasiswa WHERE Kota="Bekasi" AND JenisKelamin="Perempuan";
++----------+---------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan | Kota   | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+| 11223347 | Lisa Ayu      | Jl.anggrek  | Bekasi |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
+| 11223348 | Tiara Wahidah | Jl.Mawar    | Bekasi |  334459 | 11223348 | Perempuan    | 1980-02-05   |     22338 |
++----------+---------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+2 rows in set (0.33 sec)
+
+
+Logika (AND) dan (OR) dengan perintah.
+SELECT*FROM <table> WHERE <kondisi> AND <kondisi> OR <kondisi>
+
+MariaDB [op]> SELECT*FROM Mahasiswa WHERE Kota="Bekasi" AND JenisKelamin="Laki-Laki" OR TanggalLahir<="1997-01-01" AND JenisKelamin="Perempuan";
++----------+---------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan | Kota   | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+| 11223344 | Ari Santoso   | Jl.kenari   | Bekasi |  334455 | 11223344 | Laki-Laki    | 1979-10-31   |     22334 |
+| 11223347 | Lisa Ayu      | Jl.anggrek  | Bekasi |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
+| 11223348 | Tiara Wahidah | Jl.Mawar    | Bekasi |  334459 | 11223348 | Perempuan    | 1980-02-05   |     22338 |
++----------+---------------+-------------+--------+---------+----------+--------------+--------------+-----------+
+3 rows in set (0.00 sec)
+
+cara menampilkan kolom dengan perintah ;
+
+
+SELECT (field,....,fieldn) FROM <table>;
+
+MariaDB [op]> SELECT Nama, AlamatJalan FROM Mahasiswa;
++---------------+-------------+
+| Nama          | AlamatJalan |
++---------------+-------------+
+| Ari Santoso   | Jl.kenari   |
+| Ario Talib    | Jl.merpati  |
+| Lisa Ayu      | Jl.anggrek  |
+| Tiara Wahidah | Jl.Mawar    |
+| Anton Sinaga  | Jl.kenanga  |
++---------------+-------------+
+5 rows in set (0.00 sec)
+
+yang terakhir menampilkan data secara berurut...
+dengan perintah ;
+SELECT *FROM <table> ORDER BY (field) ASC/DESC;
+
+MariaDB [op]> SELECT*FROM Mahasiswa ORDER BY Nama ASC;
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| NIM      | Nama          | AlamatJalan | Kota     | KodePos | noHP     | JenisKelamin | TanggalLahir | KodeDosen |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+| 11223349 | Anton Sinaga  | Jl.kenanga  | Cikarang |  334450 | 11223349 | Laki-Laki    | 1988-03-10   |     22339 |
+| 11223344 | Ari Santoso   | Jl.kenari   | Bekasi   |  334455 | 11223344 | Laki-Laki    | 1979-10-31   |     22334 |
+| 11223345 | Ario Talib    | Jl.merpati  | Cikarang |  334456 | 11223345 | Laki-Laki    | 1999-11-16   |     22335 |
+| 11223347 | Lisa Ayu      | Jl.anggrek  | Bekasi   |  334458 | 11223347 | Perempuan    | 1996-01-02   |     22337 |
+| 11223348 | Tiara Wahidah | Jl.Mawar    | Bekasi   |  334459 | 11223348 | Perempuan    | 1980-02-05   |     22338 |
++----------+---------------+-------------+----------+---------+----------+--------------+--------------+-----------+
+5 rows in set (0.10 sec)
+
+
+
+THANKS FOR WATCHING.......................................
+
+
+
+JANGAN LUPA KLIK SUBSCRIBE YAHHHHHHHHHH............

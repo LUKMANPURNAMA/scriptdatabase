@@ -1,0 +1,102 @@
+	hello selamat datang kembali 
+
+		       di 
+
+channel 	LUKMAN PURNAMA @setangkaimawaroffc
+
+
+
+
+Disini saya akan membahas tentang tutorial menggabungkan tabel database menggunakan perintah JOIN
+
+
+
+oke , langkah pertama kita membuat database dengan nama sewa_mobil
+dan kita membuat 3 tabel dengan nama table
+> mobil
+> pelanggan
+> sewa
+
+
+kali ini saya sudah menyiapkan tabel dan data tablenya 
+
+
+
+nah jika kalian lupa atau belum tau membuat table kalian lihat di bawah deskripsi ya heheehe...
+
+
+kita masukan data yang sudah kita buat 
+
+
+lalu cek tabelnya 
+	show tables;
+cek data tablenya juga 
+	select*from (tableyangkitabuat);
+
+
+nah sekarang menggabungkan Tabel dengan perintah JOIN 
+
+Buat query untuk menampikan data seperti berikut:
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+di slide powerpoint>>>>>>>>>>>>>>>>>>>>>>>>>>>
+1.
+MariaDB [sewa_mobil]> SELECT
+    -> mobil.kode,
+    -> mobil.jenis,
+    -> mobil.merk,
+    -> sewa.nofaktursewa,
+    -> sewa.lamasewa,
+    -> sewa.tglsewa,
+    -> sewa.uangmuka from mobil
+    -> left join sewa on mobil.kode=sewa.kodemobil;
++------+-------+-----------+--------------+----------+------------+----------+
+| kode | jenis | merk      | nofaktursewa | lamasewa | tglsewa    | uangmuka |
++------+-------+-----------+--------------+----------+------------+----------+
+| M001 | SEDAN | BMW E5    | F001         | 2        | 2008-12-01 | 200000   |
+| M003 | BUS   | MERCEDEZ  | F001         | 2        | 2008-12-01 | 200000   |
+| M002 | SEDAN | HONDA CRV | F002         | 1        | 2008-12-01 | 100000   |
+| M004 | BUS   | DYNA      | NULL         | NULL     | NULL       | NULL     |
+| M005 | TRUCK | HYNO ZX   | NULL         | NULL     | NULL       | NULL     |
+| M006 | TRUCK | DYNA X1   | NULL         | NULL     | NULL       | NULL     |
++------+-------+-----------+--------------+----------+------------+----------+
+
+2.MariaDB [sewa_mobil]> SELECT
+    -> sewa.nofaktursewa,
+    -> pelanggan.nama,
+    -> sewa.tglsewa,
+    -> mobil.jenis,
+    -> mobil.merk,
+    -> sewa.lamasewa,
+    -> sewa.uangmuka from sewa
+    -> left join pelanggan on sewa.kodepelanggan=pelanggan.kode
+    -> left join mobil on sewa.kodemobil=mobil.kode;
++--------------+--------------+------------+-------+-----------+----------+----------+
+| nofaktursewa | nama         | tglsewa    | jenis | merk      | lamasewa | uangmuka |
++--------------+--------------+------------+-------+-----------+----------+----------+
+| F001         | PT FOX RIVER | 2008-12-01 | SEDAN | BMW E5    | 2        | 200000   |
+| F001         | PT FOX RIVER | 2008-12-01 | BUS   | MERCEDEZ  | 2        | 200000   |
+| F002         | CV FOXCON    | 2008-12-01 | SEDAN | HONDA CRV | 1        | 100000   |
++--------------+--------------+------------+-------+-----------+----------+----------+
+
+3.MariaDB [sewa_mobil]> SELECT
+    -> pelanggan.nama,
+    -> pelanggan.kota,
+    -> sewa.nofaktursewa,
+    -> sewa.tglsewa,
+    -> sewa.kodemobil,
+    -> sewa.lamasewa,
+    -> sewa.uangmuka from pelanggan
+    -> left join sewa on pelanggan.kode=sewa.kodepelanggan;
++--------------+----------+--------------+------------+-----------+----------+----------+
+| nama         | kota     | nofaktursewa | tglsewa    | kodemobil | lamasewa | uangmuka |
++--------------+----------+--------------+------------+-----------+----------+----------+
+| PT FOX RIVER | BENGKULU | F001         | 2008-12-01 | M001      | 2        | 200000   |
+| PT FOX RIVER | BENGKULU | F001         | 2008-12-01 | M003      | 2        | 200000   |
+| CV FOXCON    | JAKARTA  | F002         | 2008-12-01 | M002      | 1        | 100000   |
+| PT FARMACOM  | LAMPUNG  | NULL         | NULL       | NULL      | NULL     | NULL     |
++--------------+----------+--------------+------------+-----------+----------+----------+
+
+
+	thanks for watching and click subscribe oke >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
